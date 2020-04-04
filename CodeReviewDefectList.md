@@ -10,5 +10,5 @@ ID Number | Location (File and Line#) | Problem Description| Category | Severity
 3         | Cart.java Line #105       | No method banner comment | CG   | Low
 4         | Cart.java Line #37        | Method naming convention violation | CG |Low
 5         | Cart.java Line #81        | Too long Identifier    | CS   | Low
-6         | Cart.java Line #60        | User age > 21 should be >= 21 | FD | BR
+6         | Cart.java Line #59        | Adds alcohol to cart before age check| FD | BR
 7         | Cart.java Line #67        | Object should be of type Dairy | FD | BR
