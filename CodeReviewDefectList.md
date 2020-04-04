@@ -5,9 +5,7 @@
 
 ID Number | Location (File and Line#) | Problem Description| Category | Severity 
 ----------|---------------------------|--------------------|----------|----------
-
 1         | Cart.java Line # 5        | No class banner comment | CG   | Low
-----------|---------------------------|--------------------|----------|----------
 2         | Cart.java Line #1         | No file banner comment | CG   | Low
 3         | Cart.java Line #105       | No method banner comment | CG   | Low
 4         | Cart.java Line #37        | Method naming convention violation | CG |Low
