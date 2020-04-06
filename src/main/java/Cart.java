@@ -35,7 +35,73 @@ public class Cart {
      * @throws UnderAgeException
      */
     public double calcCost() throws UnderAgeException {
-        return 0; //implement me, will be important for assignment 4 (nothing to do here for assignment 3)
+    	double subTotal = 0;
+    	double total = 0;
+    	double produceDeal = 1.0;
+    	double frozenDeal = 3.0;
+    	
+    	int produceCounter = 0;
+    	int alcoholCounter = 0;
+    	int frozenFoodCounter = 0;
+    	int meatCounter = 0;
+    	int dairyCounter = 0;
+    	
+    	for(int i = 0; i < cart.size(); i++) {
+    		//subTotal += cart.get(i).getCost();
+
+    		
+    		if(cart.get(i).getClass().toString() == Produce.class.toString()) {
+    			produceCounter++;
+        		subTotal += cart.get(i).getCost();
+        		
+    			if(produceCounter >= 3) {
+    				subTotal = subTotal - produceDeal;
+    				produceCounter = 0;
+    			}
+    			
+    			
+    		}
+    		else if(cart.get(i).getClass().toString()==Alcohol.class.toString()) {
+    			if(userAge < 21) {
+    				throw new UnderAgeException("User is underage, cannot purchase this product!");
+    				
+    			}
+    			else {
+    				alcoholCounter++;
+    	    		subTotal += cart.get(i).getCost();
+
+    			}
+    			
+    		}
+    		 else if (cart.get(i).getClass().toString() == Dairy.class.toString()) {
+    			 dairyCounter++;
+                 subTotal += cart.get(i).getCost();
+                 
+
+             }
+    		 else if (cart.get(i).getClass().toString() == Meat.class.toString()) { 
+    			 meatCounter++;
+    	    	 subTotal += cart.get(i).getCost();
+    	    	 
+    		 }
+                 
+    		 
+    	     else if (cart.get(i).getClass().toString() == FrozenFood.class.toString()) 
+    	    	 frozenFoodCounter++;
+		         subTotal += cart.get(i).getCost();
+		         
+    	    	 if (alcoholCounter >= 1 && frozenFoodCounter >= 1) {
+                   subTotal = subTotal - frozenDeal;
+                   alcoholCounter--;
+                   frozenFoodCounter--;
+            }
+    	     
+    	     
+    	    	
+         total = subTotal + (getTax(subTotal,"AZ"));
+    	}
+    	
+        return total; //implement me, will be important for assignment 4 (nothing to do here for assignment 3)
     }
 
     // calculates how much was saved in the current shopping cart based on the deals, returns the saved amount
@@ -48,8 +114,6 @@ public class Cart {
         double produce_counter = 0;
         int alcoholCounter = 0;
         int frozenFoodCounter = 0;
-        int dairyCounter = 0;
-
         for(int i = 0; i < cart.size(); i++) {
             subTotal += cart.get(i).getCost();
             costAfterSavings =costAfterSavings+cart.get(i).getCost();
@@ -65,14 +129,14 @@ public class Cart {
             else if (cart.get(i).getClass().toString()==Alcohol.class.toString()) {
                 alcoholCounter++;
                 if (userAge < 21) {
+                	
                     throw new UnderAgeException("The User is not of age to purchase alcohol!");
                 }
             }
-            else if (cart.get(i).getClass().toString() == FrozenFood.class.toString()) {
-                frozenFoodCounter++;
+            else if (cart.get(i).getClass().toString() == Dairy.class.toString()) {
             }
-            else if (cart.get(i).getClass().toString() == Dairy.class.toString())
-                dairyCounter++;
+            else if (cart.get(i).getClass().toString() == FrozenFood.class.toString())
+                frozenFoodCounter++;
 
             if (alcoholCounter >= 1 && frozenFoodCounter >= 1) {
                  costAfterSavings = costAfterSavings + 3;
