@@ -526,37 +526,7 @@ public class calcCostTest {
     	assertEquals(noAlcoholExpected, amount, .01);
     }
     
-    /////////////////////////////////////////////////////////////////
-    //Test 18: Checks if an under 21 aged person is given the Alcohol
-    //         + Frozen Food deal. Result should be that the person does
-    //         not get the deal but can still check out the Frozen food 
-    //         item
-    ////////////////////////////////////////////////////////////////
-    Cart frozDealUnder;
-    double frozDealUnderExpected;
-    
-    @org.junit.Before
-    public void setupFrozDealUnder() throws Exception {
-    	
-    	frozDealUnder = new Cart(18);
-    	for(int i = 0; i < 1; i++) {
-    		frozDealUnder.addItem(new FrozenFood());
-    	}
-    	for(int i = 0; i < 1; i++) {
-    		frozDealUnder.addItem(new Alcohol());
-    	}
-    	frozDealUnderExpected = 5.40;
-    }
-    
-    @After
-    public void tearDown18() throws Exception {
-    }
-    
-    @Test
-    public void checkFrozAlcDealUnderAgeCost() throws UnderAgeException{
-    	double amount = frozDealUnder.calcCost();
-    	assertEquals(frozDealUnderExpected, amount, .01);
-    }
+   
    
     /////////////////////////////////////////////////////////////////
     //Test 19: Produce should be $2 or 3 for $5. Test that 3 are $5,
@@ -586,37 +556,7 @@ public class calcCostTest {
     	assertEquals(produceDealExpected, amount, .01);
     }
     
-    /////////////////////////////////////////////////////////////////
-    //Test 20: Checks if an under 21 aged person tries to buy Alcohol
-    //         and a non deal item. Result should be that the person does
-    //         not get the alcohol but can still check out the non deal 
-    //         item
-    ////////////////////////////////////////////////////////////////
-    Cart nonDealUnder;
-    double nonDealUnderExpected;
-    
-    @org.junit.Before
-    public void setupNonDealUnder() throws Exception {
-    	
-    	nonDealUnder = new Cart(18);
-    	for(int i = 0; i < 1; i++) {
-    		frozDealUnder.addItem(new Meat());
-    	}
-    	for(int i = 0; i < 1; i++) {
-    		frozDealUnder.addItem(new Alcohol());
-    	}
-    	nonDealUnderExpected = 10.80;
-    }
-    
-    @After
-    public void tearDown20() throws Exception {
-    }
-    
-    @Test
-    public void checkNonDealUnderAgeCost() throws UnderAgeException{
-    	double amount = nonDealUnder.calcCost();
-    	assertEquals(nonDealUnderExpected, amount, .01);
-    }
+  
     
     /////////////////////////////////////////////////////////////////
     //Test 21: Produce should be $2 or 3 for $5. Test that 3 are $5,
