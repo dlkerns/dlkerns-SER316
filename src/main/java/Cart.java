@@ -153,12 +153,20 @@ public class Cart {
                 }
             }
             //Again use .equals for comparison of strings
+            //Inserted a try/catch block to handle the exception
             else if (cart.get(i).getClass().toString().equals(Alcohol.class.toString())) {
-                alcoholCounter++;
-                if (userAge < 21) {
-                	
-                    throw new UnderAgeException("The User is not of age to purchase alcohol!");
-                }
+            	try {
+        			if(userAge < 21) {
+        				throw new UnderAgeException("User is underage, cannot purchase this product!");
+        				
+        			}
+        			else {
+        				alcoholCounter++;
+        			}
+        			}
+        			catch(UnderAgeException ex) {
+        				System.out.println(ex);
+        			}
             }
            //Deleted Dairy since there is not deals in dairy
             //.equals
@@ -188,6 +196,8 @@ public class Cart {
                 break;
             case "NY":
                 newTotal = totalBT * .1;
+                //insert missing break statement
+                break;
             case "CO":
                 newTotal = totalBT * .07;
                 break;
@@ -201,7 +211,8 @@ public class Cart {
       cart.add(np);
     }
 
-    public boolean RemoveItem(Product productToRemove)
+    //Reformat to lower case first letter of public function
+    public boolean removeItem(Product productToRemove)
     {
     		boolean test = false;
         for (int i = 0; i < cart.size(); i++) {
