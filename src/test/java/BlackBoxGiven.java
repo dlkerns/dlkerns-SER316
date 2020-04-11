@@ -1,31 +1,67 @@
 package test.java;
 
+import main.java.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
+import java.util.Collection;
+
+import main.java.Cart;
+import main.java.Cart1;
+import main.java.Cart2;
+import main.java.Cart3;
+import main.java.Cart4;
+import main.java.Cart5;
+
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+@RunWith(Parameterized.class)
+public class BlackBoxGiven {
 
-import main.java.Alcohol;
-import main.java.Cart;
-import main.java.Dairy;
-import main.java.FrozenFood;
-import main.java.Meat;
-import main.java.Produce;
-import main.java.UnderAgeException;
+    private static final Class<? extends Throwable> UnderAgeException = null;
+	private Class<Cart> classUnderTest;
 
-public class calcCostTest {
+    @SuppressWarnings("unchecked")
+    public BlackBoxGiven(Object classUnderTest) {
+        this.classUnderTest = (Class<Cart>) classUnderTest;
+    }
 
+    // Define all classes to be tested
+    @Parameterized.Parameters
+    public static Collection<Object[]> cartClassUnderTest() {
+        Object[][] classes = {
+            {Cart0.class},
+            {Cart1.class},
+            {Cart2.class},
+            {Cart3.class},
+            {Cart4.class},
+            {Cart5.class}
+        };
+        return Arrays.asList(classes);
+    }
 
-	 // A sample Cart
+    private Cart createCart(int age) throws Exception {
+        Constructor<Cart> constructor = classUnderTest.getConstructor(Integer.TYPE);
+        return constructor.newInstance(age);
+    }
+
+    // A sample Cart
 
     Cart cart1;
     double cart1Expected;
 
-    @Before
+
+    @org.junit.Before
     public void setUp() throws Exception {
-        cart1 = new Cart(45);
-        
+
+        // all carts should be set up like this
+
+        // cart created with an age 40 shopper
+        cart1 = createCart(40);
         for (int i = 0; i < 2; i++) {
             cart1.addItem(new Alcohol());
         }
@@ -37,10 +73,6 @@ public class calcCostTest {
         }
 
         cart1Expected = 70.2;
-    }
-
-    @After
-    public void tearDown() throws Exception {
     }
 
     // sample test
@@ -59,16 +91,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupDairy() throws Exception {
     	
-    	dairy = new Cart(40);
+    	dairy = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		dairy.addItem(new Dairy());
     	}
     	dairyExpected = 3.24;
     }
-    @After
-    public void tearDown1() throws Exception {
-    }
-    
     @Test
     public void checkDairyCost() throws UnderAgeException{
     	double amount = dairy.calcCost();
@@ -85,17 +113,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupMeat() throws Exception {
     	
-    	meat = new Cart(40);
+    	meat = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		meat.addItem(new Meat());
     	}
     	meatExpected = 10.80;
     }
-    
-    @After
-    public void tearDown2() throws Exception {
-    }
-    
     @Test
     public void checkMeatCost() throws UnderAgeException{
     	double amount = meat.calcCost();
@@ -112,17 +135,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduce() throws Exception {
     	
-    	produce = new Cart(40);
+    	produce = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		produce.addItem(new Produce());
     	}
     	produceExpected = 2.16;
     }
-    
-    @After
-    public void tearDown3() throws Exception {
-    }
-    
     @Test
     public void checkProduceCost() throws UnderAgeException{
     	double amount = produce.calcCost();
@@ -138,17 +156,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduceEdge1() throws Exception {
     	
-    	produceEdge1 = new Cart(40);
+    	produceEdge1 = createCart(40);
     	for(int i = 0; i < 2; i++) {
     		produceEdge1.addItem(new Produce());
     	}
     	produceEdge1Expected = 4.32;
     }
-    
-    @After
-    public void tearDown4() throws Exception {
-    }
-    
     @Test
     public void checkProduceEdge1Cost() throws UnderAgeException{
     	double amount = produceEdge1.calcCost();
@@ -165,17 +178,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduceEdge2() throws Exception {
     	
-    	produceEdge2 = new Cart(40);
+    	produceEdge2 = createCart(40);
     	for(int i = 0; i < 3; i++) {
     		produceEdge2.addItem(new Produce());
     	}
     	produceEdge2Expected = 5.40;
     }
-    
-    @After
-    public void tearDown5() throws Exception {
-    }
-    
     @Test
     public void checkProduceEdge2Cost() throws UnderAgeException{
     	double amount = produceEdge2.calcCost();
@@ -192,17 +200,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduceEdge3() throws Exception {
     	
-    	produceEdge3 = new Cart(40);
+    	produceEdge3 = createCart(40);
     	for(int i = 0; i < 4; i++) {
     		produceEdge3.addItem(new Produce());
     	}
     	produceEdge3Expected = 7.56;
     }
-    
-    @After
-    public void tearDown6() throws Exception {
-    }
-    
     @Test
     public void checkProduceEdge3Cost() throws UnderAgeException{
     	double amount = produceEdge3.calcCost();
@@ -219,17 +222,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduceEdge4() throws Exception {
     	
-    	produceEdge4 = new Cart(40);
+    	produceEdge4 = createCart(40);
     	for(int i = 0; i < 6; i++) {
     		produceEdge4.addItem(new Produce());
     	}
     	produceEdge4Expected = 10.80;
     }
-    
-    @After
-    public void tearDown7() throws Exception {
-    }
-    
     @Test
     public void checkProduceEdge4Cost() throws UnderAgeException{
     	double amount = produceEdge4.calcCost();
@@ -246,17 +244,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduceEdge5() throws Exception {
     	
-    	produceEdge5 = new Cart(40);
+    	produceEdge5 = createCart(40);
     	for(int i = 0; i < 8; i++) {
     		produceEdge5.addItem(new Produce());
     	}
     	produceEdge5Expected = 15.12;
     }
-    
-    @After
-    public void tearDown8() throws Exception {
-    }
-    
     @Test
     public void checkProduceEdge5Cost() throws UnderAgeException{
     	double amount = produceEdge5.calcCost();
@@ -273,17 +266,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupAlcohol() throws Exception {
     	
-    	alcohol = new Cart(40);
+    	alcohol = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		alcohol.addItem(new Alcohol());
     	}
     	alcoholExpected = 8.64;
     }
-    
-    @After
-    public void tearDown9() throws Exception {
-    }
-    
     @Test
     public void checkAlcoholCost() throws UnderAgeException{
     	double amount = alcohol.calcCost();
@@ -300,17 +288,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupFrozen() throws Exception {
     	
-    	frozen = new Cart(40);
+    	frozen = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		frozen.addItem(new FrozenFood());
     	}
     	frozenExpected = 5.40;
     }
-    
-    @After
-    public void tearDown10() throws Exception {
-    }
-    
     @Test
     public void checkFrozenCost() throws UnderAgeException{
     	double amount = frozen.calcCost();
@@ -328,7 +311,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupFrozenAlc() throws Exception {
     	
-    	frozenAlc = new Cart(40);
+    	frozenAlc = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		frozenAlc.addItem(new FrozenFood());
     	}
@@ -337,11 +320,6 @@ public class calcCostTest {
     	}
     	frozenAlcExpected = 10.80;
     }
-    
-    @After
-    public void tearDown11() throws Exception {
-    }
-    
     @Test
     public void checkFrozenAlcCost() throws UnderAgeException{
     	double amount = frozenAlc.calcCost();
@@ -349,7 +327,7 @@ public class calcCostTest {
     }
     
     /////////////////////////////////////////////////////////////////
-    //Test 12: One Frozen Food and One Alcohol should be $10 per the 
+    //Test 11: One Frozen Food and One Alcohol should be $10 per the 
     //          deal test that it is $10,  test that 1 unit of
     //Alcohol and two frozen foods are $15, test all carts, includes 
     //tax in expected final price
@@ -360,7 +338,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupFrozenAlc1() throws Exception {
     	
-    	frozenAlc1 = new Cart(40);
+    	frozenAlc1 = createCart(40);
     	for(int i = 0; i < 2; i++) {
     		frozenAlc1.addItem(new FrozenFood());
     	}
@@ -369,10 +347,6 @@ public class calcCostTest {
     	}
     	frozenAlc1Expected = 16.20;
     }
-    
-    @After
-    public void tearDown12() throws Exception {
-    }
     @Test
     public void checkFrozenAlc1Cost() throws UnderAgeException{
     	double amount = frozenAlc1.calcCost();
@@ -380,7 +354,7 @@ public class calcCostTest {
     }
     
     /////////////////////////////////////////////////////////////////
-    //Test 13: One Frozen Food and One Alcohol should be $10 per the 
+    //Test 12: One Frozen Food and One Alcohol should be $10 per the 
     //          deal test that it is $10,  test that 2 units of
     //Alcohol and one frozen food is $18, test all carts, includes 
     //tax in expected final price
@@ -391,7 +365,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupFrozenAlc2() throws Exception {
     	
-    	frozenAlc2 = new Cart(40);
+    	frozenAlc2 = createCart(40);
     	for(int i = 0; i < 1; i++) {
     		frozenAlc2.addItem(new FrozenFood());
     	}
@@ -400,11 +374,6 @@ public class calcCostTest {
     	}
     	frozenAlc2Expected = 19.44;
     }
-    
-    @After
-    public void tearDown13() throws Exception {
-    }
-    
     @Test
     public void checkFrozenAlc2Cost() throws UnderAgeException{
     	double amount = frozenAlc2.calcCost();
@@ -412,7 +381,7 @@ public class calcCostTest {
     }
     
     /////////////////////////////////////////////////////////////////
-    //Test 14: One Frozen Food and One Alcohol should be $10 per the 
+    //Test 12: One Frozen Food and One Alcohol should be $10 per the 
     //          deal test that it is $10,  test that 2 units of
     //Alcohol and two frozen foods are $20, test all carts, includes 
     //tax in expected final price
@@ -423,7 +392,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupFrozenAlc3() throws Exception {
     	
-    	frozenAlc3 = new Cart(40);
+    	frozenAlc3 = createCart(40);
     	for(int i = 0; i < 2; i++) {
     		frozenAlc3.addItem(new FrozenFood());
     	}
@@ -432,11 +401,6 @@ public class calcCostTest {
     	}
     	frozenAlc3Expected = 21.60;
     }
-    
-    @After
-    public void tearDown14() throws Exception {
-    }
-    
     @Test
     public void checkFrozenAlc3Cost() throws UnderAgeException{
     	double amount = frozenAlc3.calcCost();
@@ -445,7 +409,7 @@ public class calcCostTest {
     
 }
     /////////////////////////////////////////////////////////////////
-    //Test 15: Alcohol should only be sold to people 21 or over
+    //Test 13: Alcohol should only be sold to people 21 or over
     //         tests should fail if age is under 21, test should
     //         display an error if this is not handled
     ////////////////////////////////////////////////////////////////
@@ -455,17 +419,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupAlcoholEx() throws Exception {
     	
-    	alcoholEx = new Cart(19);
+    	alcoholEx = createCart(19);
     	for(int i = 0; i < 1; i++) {
     		alcoholEx.addItem(new Alcohol());
     	}
     	alcoholExExpected = 8.64;
     }
-    
-    @After
-    public void tearDown15() throws Exception {
-    }
-    
     @Test
     public void checkAlcoholExCost() throws UnderAgeException{
     	double amount = alcoholEx.calcCost();
@@ -473,7 +432,7 @@ public class calcCostTest {
     }
  
     /////////////////////////////////////////////////////////////////
-    //Test 16: Alcohol should only be sold to people 21 or over
+    //Test 14: Alcohol should only be sold to people 21 or over
     //         tests should fail if age is exactly 21, test should
     //         display an error if this is not handled
     ////////////////////////////////////////////////////////////////
@@ -483,25 +442,20 @@ public class calcCostTest {
     @org.junit.Before
     public void setupAlcoholEx1() throws Exception {
     	
-    	alcoholEx1 = new Cart(21);
+    	alcoholEx1 = createCart(21);
     	for(int i = 0; i < 1; i++) {
     		alcoholEx1.addItem(new Alcohol());
     	}
     	alcoholEx1Expected = 8.64;
     }
-    
-    @After
-    public void tearDown16() throws Exception {
-    }
-    
     @Test
     public void checkAlcoholEx1Cost() throws UnderAgeException{
     	double amount = alcoholEx1.calcCost();
     	assertEquals(alcoholEx1Expected, amount, .01);
     }
     /////////////////////////////////////////////////////////////////
-    //Test 17: Checks if an under age person is flagged if buying
-    //         a non alcoholic item
+    //Test 15: Checks if an under age person is flagged if buying
+    //         a non alcohoic item
     ////////////////////////////////////////////////////////////////
     Cart noAlcohol;
     double noAlcoholExpected;
@@ -509,17 +463,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupNoAlcohol() throws Exception {
     	
-    	noAlcohol = new Cart(19);
+    	noAlcohol = createCart(19);
     	for(int i = 0; i < 1; i++) {
     		noAlcohol.addItem(new Meat());
     	}
     	noAlcoholExpected = 10.80;
     }
-    
-    @After
-    public void tearDown17() throws Exception {
-    }
-    
     @Test
     public void checkNoAlcoholCost() throws UnderAgeException{
     	double amount = noAlcohol.calcCost();
@@ -527,7 +476,7 @@ public class calcCostTest {
     }
     
     /////////////////////////////////////////////////////////////////
-    //Test 18: Checks if an under 21 aged person is given the Alcohol
+    //Test 16: Checks if an under 21 aged person is given the Alcohol
     //         + Frozen Food deal. Result should be that the person does
     //         not get the deal but can still check out the Frozen food 
     //         item
@@ -538,7 +487,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupFrozDealUnder() throws Exception {
     	
-    	frozDealUnder = new Cart(18);
+    	frozDealUnder = createCart(18);
     	for(int i = 0; i < 1; i++) {
     		frozDealUnder.addItem(new FrozenFood());
     	}
@@ -547,11 +496,6 @@ public class calcCostTest {
     	}
     	frozDealUnderExpected = 5.40;
     }
-    
-    @After
-    public void tearDown18() throws Exception {
-    }
-    
     @Test
     public void checkFrozAlcDealUnderAgeCost() throws UnderAgeException{
     	double amount = frozDealUnder.calcCost();
@@ -559,7 +503,7 @@ public class calcCostTest {
     }
    
     /////////////////////////////////////////////////////////////////
-    //Test 19: Produce should be $2 or 3 for $5. Test that 3 are $5,
+    //Test 17: Produce should be $2 or 3 for $5. Test that 3 are $5,
     //         for an under age person as well, test 
     //that all carts, includes tax in expected final price
     ////////////////////////////////////////////////////////////////
@@ -569,17 +513,12 @@ public class calcCostTest {
     @org.junit.Before
     public void setupProduceDeal() throws Exception {
     	
-    	produceDeal = new Cart(6);
+    	produceDeal = createCart(6);
     	for(int i = 0; i < 3; i++) {
     		produceDeal.addItem(new Produce());
     	}
     	produceDealExpected = 5.40;
     }
-    
-    @After
-    public void tearDown19() throws Exception {
-    }
-    
     @Test
     public void checkUnderAgeProduceDealCost() throws UnderAgeException{
     	double amount = produceDeal.calcCost();
@@ -587,7 +526,7 @@ public class calcCostTest {
     }
     
     /////////////////////////////////////////////////////////////////
-    //Test 20: Checks if an under 21 aged person tries to buy Alcohol
+    //Test 18: Checks if an under 21 aged person tries to buy Alcohol
     //         and a non deal item. Result should be that the person does
     //         not get the alcohol but can still check out the non deal 
     //         item
@@ -598,7 +537,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupNonDealUnder() throws Exception {
     	
-    	nonDealUnder = new Cart(18);
+    	nonDealUnder = createCart(18);
     	for(int i = 0; i < 1; i++) {
     		frozDealUnder.addItem(new Meat());
     	}
@@ -607,11 +546,6 @@ public class calcCostTest {
     	}
     	nonDealUnderExpected = 10.80;
     }
-    
-    @After
-    public void tearDown20() throws Exception {
-    }
-    
     @Test
     public void checkNonDealUnderAgeCost() throws UnderAgeException{
     	double amount = nonDealUnder.calcCost();
@@ -619,7 +553,7 @@ public class calcCostTest {
     }
     
     /////////////////////////////////////////////////////////////////
-    //Test 21: Produce should be $2 or 3 for $5. Test that 3 are $5,
+    //Test 19: Produce should be $2 or 3 for $5. Test that 3 are $5,
     //         for an under age person as well, test 
     //that all carts, includes tax in expected final price
     ////////////////////////////////////////////////////////////////
@@ -629,7 +563,7 @@ public class calcCostTest {
     @org.junit.Before
     public void setupEmpty() throws Exception {
     	
-    	empty = new Cart(21);
+    	empty = createCart(12);
     	for(int i = 0; i < 1; i++) {
     		empty.addItem(new Alcohol());
     	
@@ -637,16 +571,10 @@ public class calcCostTest {
     	
     	emptyExpected = 8.64;
     }
-    
-    @After
-    public void tearDown21() throws Exception {
-    }
-    
     @Test
     public void checkEmptyCost() throws UnderAgeException{
     	double amount = empty.calcCost();
     	assertEquals(emptyExpected, amount, .01);
     }
  
-
 }
