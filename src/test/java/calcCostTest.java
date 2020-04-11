@@ -532,6 +532,7 @@ public class calcCostTest {
     //         not get the deal but can still check out the Frozen food 
     //         item
     ////////////////////////////////////////////////////////////////
+  /**
     Cart frozDealUnder;
     double frozDealUnderExpected;
     
@@ -557,7 +558,7 @@ public class calcCostTest {
     	double amount = frozDealUnder.calcCost();
     	assertEquals(frozDealUnderExpected, amount, .01);
     }
-   
+   */
     /////////////////////////////////////////////////////////////////
     //Test 19: Produce should be $2 or 3 for $5. Test that 3 are $5,
     //         for an under age person as well, test 
@@ -592,6 +593,7 @@ public class calcCostTest {
     //         not get the alcohol but can still check out the non deal 
     //         item
     ////////////////////////////////////////////////////////////////
+   /**
     Cart nonDealUnder;
     double nonDealUnderExpected;
     
@@ -617,7 +619,7 @@ public class calcCostTest {
     	double amount = nonDealUnder.calcCost();
     	assertEquals(nonDealUnderExpected, amount, .01);
     }
-    
+    */
     /////////////////////////////////////////////////////////////////
     //Test 21: Produce should be $2 or 3 for $5. Test that 3 are $5,
     //         for an under age person as well, test 
