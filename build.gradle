@@ -1,7 +1,7 @@
-// plugins {
+ plugins {
 //     id "com.github.spotbugs" version "3.0.0"
-//     id "checkstyle"
-// }
+     id "checkstyle"
+ }
 
 apply plugin: 'application'
 apply plugin: 'jacoco'
@@ -27,22 +27,22 @@ test{
 ///////////////////////////////////////////////////////////////////////
 // Configure Checkstyle
 /////////////////////////////////////////////////////////////////////
- // apply plugin: 'checkstyle'
- // checkstyle {
+  apply plugin: 'checkstyle'
+  checkstyle {
  //   // Keep checkstyle a little quieter
- //   ignoreFailures = true
- //   showViolations = false
- // }
+    ignoreFailures = true
+    showViolations = false
+  }
 
- // tasks.withType(Checkstyle) {
- //   reports {
- //     html.enabled = true
- //     xml.enabled = false
- //   }
- // }
- // checkstyle {
- //     toolVersion = "8.8"
- // }
+  tasks.withType(Checkstyle) {
+    reports {
+      html.enabled = true
+     xml.enabled = false
+    }
+  }
+  checkstyle {
+      toolVersion = "8.8"
+  }
 
 
 /////////////////////////////////////////////////////////////////////////
