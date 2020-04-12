@@ -1,4 +1,5 @@
 package test.java;
+
 import main.java.Alcohol;
 import main.java.Cart;
 import main.java.Produce;
@@ -22,11 +23,16 @@ public class CartTest {
     Cart produceDeal;
     double savingsExpected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupProduceDeal() throws Exception {
 
         produceDeal = new Cart(25);
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             produceDeal.addItem(new Produce());
         }
         savingsExpected = 1.00;
@@ -37,7 +43,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkProduceDealSavings() throws UnderAgeException{
+    public void checkProduceDealSavings() throws UnderAgeException {
         double amount = produceDeal.amountSaved();
         assertEquals(savingsExpected, amount, .01);
     }
@@ -52,11 +58,16 @@ public class CartTest {
     Cart produceDeal1;
     double savings1Expected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupProduceDeal1() throws Exception {
 
         produceDeal1 = new Cart(25);
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             produceDeal1.addItem(new Produce());
         }
         savings1Expected = 0.00;
@@ -67,7 +78,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkProduceDeal1Savings() throws UnderAgeException{
+    public void checkProduceDeal1Savings() throws UnderAgeException {
         double amount = produceDeal1.amountSaved();
         assertEquals(savings1Expected, amount, .01);
     }
@@ -82,11 +93,16 @@ public class CartTest {
     Cart produceDeal2;
     double savings2Expected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupProduceDeal2() throws Exception {
 
         produceDeal2 = new Cart(25);
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             produceDeal2.addItem(new Produce());
         }
         savings2Expected = 0.00;
@@ -97,7 +113,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkProduceDeal2Savings() throws UnderAgeException{
+    public void checkProduceDeal2Savings() throws UnderAgeException {
         double amount = produceDeal2.amountSaved();
         assertEquals(savings2Expected, amount, .01);
     }
@@ -112,11 +128,16 @@ public class CartTest {
     Cart produceDeal3;
     double savings3Expected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupProduceDeal3() throws Exception {
 
         produceDeal3 = new Cart(25);
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             produceDeal3.addItem(new Produce());
         }
         savings3Expected = 0.00;
@@ -127,7 +148,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkProduceDeal3Savings() throws UnderAgeException{
+    public void checkProduceDeal3Savings() throws UnderAgeException {
         double amount = produceDeal3.amountSaved();
         assertEquals(savings3Expected, amount, .01);
     }
@@ -142,14 +163,19 @@ public class CartTest {
     Cart frozenAlc;
     double frozenAlcExpected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupFrozenAlcDeal() throws Exception {
 
         frozenAlc = new Cart(25);
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             frozenAlc.addItem(new Alcohol());
         }
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             frozenAlc.addItem(new FrozenFood());
         }
         frozenAlcExpected = 3.00;
@@ -160,7 +186,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkFrozenAlcSavings() throws UnderAgeException{
+    public void checkFrozenAlcSavings() throws UnderAgeException { 
         double amount = frozenAlc.amountSaved();
         assertEquals(frozenAlcExpected, amount, .01);
     }
@@ -175,12 +201,17 @@ public class CartTest {
     Cart frozen;
     double frozenExpected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupFrozenDeal() throws Exception {
 
         frozen = new Cart(25);
 
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             frozenAlc.addItem(new FrozenFood());
         }
         frozenExpected = 0.00;
@@ -191,7 +222,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkFrozenSavings() throws UnderAgeException{
+    public void checkFrozenSavings() throws UnderAgeException {
         double amount = frozen.amountSaved();
         assertEquals(frozenExpected, amount, .01);
     }
@@ -205,11 +236,16 @@ public class CartTest {
     Cart alc;
     double alcExpected;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @org.junit.Before
     public void setupAlcDeal() throws Exception {
 
         alc = new Cart(19);
-        for(int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
             alc.addItem(new Alcohol());
         }
         alcExpected = 0.00;
@@ -220,7 +256,7 @@ public class CartTest {
     }
 
     @Test
-    public void checkAlcSavings() throws UnderAgeException{
+    public void checkAlcSavings() throws UnderAgeException {
         double amount = alc.amountSaved();
         assertEquals(alcExpected, amount, .01);
     }
@@ -250,6 +286,7 @@ public class CartTest {
     //Description: Checks to see if California tax is calculated correctly
     //
     /////////////////////////////////////////////////////////////////////
+    
     Cart caTax;
 
     @Before
@@ -271,6 +308,7 @@ public class CartTest {
     //Description: Checks to see if New York tax is calculated correctly
     //
     /////////////////////////////////////////////////////////////////////
+    
     Cart nyTax;
 
     @Before
@@ -291,6 +329,7 @@ public class CartTest {
     //Description: Checks to see if Colorado tax is calculated correctly
     //
     /////////////////////////////////////////////////////////////////////
+    
     Cart coTax;
 
     @Before
@@ -312,6 +351,7 @@ public class CartTest {
     //             amount without any taxes attached
     //
     /////////////////////////////////////////////////////////////////////
+   
     Cart dTax;
 
     @Before
@@ -335,16 +375,21 @@ public class CartTest {
     /////////////////////////////////////////////////////////////////////
     Cart removeIt;
 
+    /**
+     * Throws exception.
+     * @throws Exception
+     * 
+     */
     @Before
     public void setUpRemoveItem() throws Exception {
-        removeIt= new Cart(45);
+        removeIt = new Cart(45);
         Produce apple = new Produce();
         FrozenFood hotPockets = new FrozenFood();
 
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             removeIt.addItem(apple);
         }
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             removeIt.addItem(hotPockets);
         }
 
@@ -359,10 +404,10 @@ public class CartTest {
     public void getRemoveIt() {
         Produce apple = new Produce();
         FrozenFood hotPockets = new FrozenFood();
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             removeIt.addItem(hotPockets);
         }
-        for(int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             removeIt.addItem(apple);
         }
         boolean removed = removeIt.removeItem(hotPockets);
