@@ -2,8 +2,8 @@ package test.java;
 
 import main.java.Alcohol;
 import main.java.Cart;
-import main.java.Produce;
 import main.java.FrozenFood;
+import main.java.Produce;
 import main.java.UnderAgeException;
 
 import org.junit.After;

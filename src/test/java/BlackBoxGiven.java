@@ -1,14 +1,11 @@
 package test.java;
 
-import main.java.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
 import java.lang.reflect.Constructor;
+
 import java.util.Arrays;
 import java.util.Collection;
+
+import main.java.*;
 
 import main.java.Cart;
 import main.java.Cart1;
@@ -16,6 +13,10 @@ import main.java.Cart2;
 import main.java.Cart3;
 import main.java.Cart4;
 import main.java.Cart5;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.*;
 
