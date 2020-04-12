@@ -1,6 +1,13 @@
 package main.java;
 
 public class Main {
+    /**
+     * Main.
+     * @param args
+     * 
+     * @throws UnderAgeException
+     * 
+     */
     public static void main(String[] args) throws UnderAgeException {
 
         // Instantiating some products

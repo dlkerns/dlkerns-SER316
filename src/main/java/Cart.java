@@ -34,6 +34,7 @@ public class Cart {
      *
      * @return double totalCost
      * @throws UnderAgeException
+     * 
      */
     public double calcCost() throws UnderAgeException {
         double subTotal = 0;
@@ -47,32 +48,33 @@ public class Cart {
         int meatCounter = 0;
         int dairyCounter = 0;
 
-        for(int i = 0; i < cart.size(); i++) {
+        for (int i = 0; i < cart.size(); i++) {
             subTotal += cart.get(i).getCost();
 
 
-            if(cart.get(i).getClass().toString().equals(Produce.class.toString())) {
+            if (cart.get(i).getClass().toString().equals(Produce.class.toString())) {
                 produceCounter++;
 
 
-                if(produceCounter >= 3) {
+                if (produceCounter >= 3) {
                     subTotal = subTotal - produceDeal;
                     produceCounter = 0;
                 }
 
 
-            }
-            else if(cart.get(i).getClass().toString().equals(Alcohol.class.toString())) {
+            
+            } else if (cart.get(i).getClass().toString().equals(Alcohol.class.toString())) {
                 try {
-                    if(userAge < 21) {
-                        throw new UnderAgeException("User is underage, cannot purchase this product!");
+                    if  (userAge < 21) {
+                        throw new UnderAgeException("User is underage, "
+                                + "cannot purchase this product!");
 
-                    }
-                    else {
+                    
+                    } else {
                         alcoholCounter++;
                     }
-                }
-                catch(UnderAgeException ex) {
+                
+                } catch (UnderAgeException ex) {
                     System.out.println(ex);
                 }
 
@@ -80,38 +82,39 @@ public class Cart {
 
 
 
-            }
-            else if (cart.get(i).getClass().toString().equals(Dairy.class.toString())) {
+            
+            } else if (cart.get(i).getClass().toString().equals(Dairy.class.toString())) {
                 dairyCounter++;
 
 
 
-            }
-            else if (cart.get(i).getClass().toString().equals(Meat.class.toString())) { 
+            
+            } else if (cart.get(i).getClass().toString().equals(Meat.class.toString())) { 
                 meatCounter++;
 
 
-            }
+            
 
 
-            else if (cart.get(i).getClass().toString().equals(FrozenFood.class.toString())) {
+            } else if (cart.get(i).getClass().toString().equals(FrozenFood.class.toString())) {
                 frozenFoodCounter++;
             }
 
 
             if (alcoholCounter >= 1 && frozenFoodCounter >= 1) {
                 try {
-                    if(userAge < 21) {
-                        throw new UnderAgeException("User is underage, cannot purchase this product!");
-                    }
-                    else {
+                    if (userAge < 21) {
+                        throw new UnderAgeException("User is underage,"
+                                + " cannot purchase this product!");
+                    
+                    } else {
 
                         subTotal = subTotal - frozenDeal;
                         alcoholCounter--;
                         frozenFoodCounter--;
                     }
-                }
-                catch(UnderAgeException ex) {
+                
+                } catch (UnderAgeException ex) {
                     System.out.println(ex);
                 }
             }
@@ -124,12 +127,21 @@ public class Cart {
         return total; 
     }
 
-    // calculates how much was saved in the current shopping cart based on the deals, returns the saved amount
+    // calculates how much was saved in the current shopping cart
+    //based on the deals, returns the saved amount
     // throws exception if alcohol is bought from underage person
-    // TODO: Create node graph for this method in assign 4: create white box tests and fix the method, reach at least 98% coverage
+    // TODO: Create node graph for this method in assign 4: create 
+    //white box tests and fix the method, reach at least 98% coverage
 
     //Change Amount_saved to amountSaved according to code style rules
     //Change int into a double because we are dealing with money
+    /**
+     * Returns amount saved.
+     * @return
+     * 
+     * @throws UnderAgeException
+     * 
+     */
     public double amountSaved() throws UnderAgeException {
 
         //Change int into double for these since they are money values
@@ -141,9 +153,9 @@ public class Cart {
         int alcoholCounter = 0;
         int frozenFoodCounter = 0;
 
-        for(int i = 0; i < cart.size(); i++) {
+        for (int i = 0; i < cart.size(); i++) {
             subTotal += cart.get(i).getCost();
-            costAfterSavings =costAfterSavings+cart.get(i).getCost();
+            costAfterSavings = costAfterSavings + cart.get(i).getCost();
 
             //Use .equals to compare strings not a boolean comparison
             if (cart.get(i).getClass().toString().equals(Produce.class.toString())) {
@@ -153,26 +165,27 @@ public class Cart {
                     costAfterSavings -= 1;
                     produceCounter = 0;
                 }
-            }
+            
             //Again use .equals for comparison of strings
             //Inserted a try/catch block to handle the exception
-            else if (cart.get(i).getClass().toString().equals(Alcohol.class.toString())) {
+            } else if (cart.get(i).getClass().toString().equals(Alcohol.class.toString())) {
                 try {
-                    if(userAge < 21) {
-                        throw new UnderAgeException("User is underage, cannot purchase this product!");
+                    if (userAge < 21) {
+                        throw new UnderAgeException("User is underage,"
+                                + " cannot purchase this product!");
 
-                    }
-                    else {
+                    
+                    } else {
                         alcoholCounter++;
                     }
-                }
-                catch(UnderAgeException ex) {
+                
+                } catch (UnderAgeException ex) {
                     System.out.println(ex);
                 }
-            }
+            
             //Deleted Dairy since there is not deals in dairy
             //.equals
-            else if (cart.get(i).getClass().toString().equals(FrozenFood.class.toString())) {
+            } else if (cart.get(i).getClass().toString().equals(FrozenFood.class.toString())) {
                 frozenFoodCounter++;
             }
 
@@ -188,24 +201,33 @@ public class Cart {
     }
 
     // Gets the tax based on state and the total
+    /**
+     * Returns tax based on state and total.
+     * @param totalBT
+     * 
+     * @param stateAbbreviation
+     * 
+     * @return
+     * 
+     */
     public double getTax(double totalBT, String stateAbbreviation) {
         double newTotal = 0;
         switch (stateAbbreviation) {
-        case "AZ":
-            newTotal = totalBT * .08;
-            break;
-        case "CA":
-            newTotal = totalBT * .09;
-            break;
-        case "NY":
-            newTotal = totalBT * .1;
-            //insert missing break statement
-            break;
-        case "CO":
-            newTotal = totalBT * .07;
-            break;
-        default:
-            return totalBT;
+            case "AZ":
+                newTotal = totalBT * .08;
+                break;
+            case "CA":
+                newTotal = totalBT * .09;
+                break;
+            case "NY":
+                newTotal = totalBT * .1;
+                //insert missing break statement
+                break;
+            case "CO":
+                newTotal = totalBT * .07;
+                break;
+            default:
+                return totalBT;
         }
         return newTotal;
     }
@@ -215,8 +237,14 @@ public class Cart {
     }
 
     //Reformat to lower case first letter of public function
-    public boolean removeItem(Product productToRemove)
-    {
+    /**
+     * Remove product.
+     * @param productToRemove
+     * 
+     * @return
+     * 
+     */
+    public boolean removeItem(Product productToRemove) {
         boolean test = false;
         for (int i = 0; i < cart.size(); i++) {
             if (cart.get(i) == productToRemove) {
