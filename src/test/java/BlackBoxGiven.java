@@ -114,7 +114,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkDairyCost() throws UnderAgeException{
+    public void checkDairyCost() throws UnderAgeException {
         double amount = dairy.calcCost();
         assertEquals(dairyExpected, amount, .01);
     }
@@ -142,7 +142,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkMeatCost() throws UnderAgeException{
+    public void checkMeatCost() throws UnderAgeException {
         double amount = meat.calcCost();
         assertEquals(meatExpected, amount, .01);
     }
@@ -170,7 +170,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkProduceCost() throws UnderAgeException{
+    public void checkProduceCost() throws UnderAgeException {
         double amount = produce.calcCost();
         assertEquals(produceExpected, amount, .01);
     }
@@ -198,7 +198,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkProduceEdge1Cost() throws UnderAgeException{
+    public void checkProduceEdge1Cost() throws UnderAgeException {
         double amount = produceEdge1.calcCost();
         assertEquals(produceEdge1Expected, amount, .01);
     }
@@ -226,7 +226,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkProduceEdge2Cost() throws UnderAgeException{
+    public void checkProduceEdge2Cost() throws UnderAgeException {
         double amount = produceEdge2.calcCost();
         assertEquals(produceEdge2Expected, amount, .01);
     }
@@ -254,7 +254,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkProduceEdge3Cost() throws UnderAgeException{
+    public void checkProduceEdge3Cost() throws UnderAgeException {
         double amount = produceEdge3.calcCost();
         assertEquals(produceEdge3Expected, amount, .01);
     }
@@ -282,7 +282,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkProduceEdge4Cost() throws UnderAgeException{
+    public void checkProduceEdge4Cost() throws UnderAgeException {
         double amount = produceEdge4.calcCost();
         assertEquals(produceEdge4Expected, amount, .01);
     }
@@ -310,7 +310,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkProduceEdge5Cost() throws UnderAgeException{
+    public void checkProduceEdge5Cost() throws UnderAgeException {
         double amount = produceEdge5.calcCost();
         assertEquals(produceEdge5Expected, amount, .01);
     }
@@ -338,7 +338,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkAlcoholCost() throws UnderAgeException{
+    public void checkAlcoholCost() throws UnderAgeException {
         double amount = alcohol.calcCost();
         assertEquals(alcoholExpected, amount, .01);
     }
@@ -366,7 +366,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkFrozenCost() throws UnderAgeException{
+    public void checkFrozenCost() throws UnderAgeException {
         double amount = frozen.calcCost();
         assertEquals(frozenExpected, amount, .01);
     }
@@ -398,7 +398,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkFrozenAlcCost() throws UnderAgeException{
+    public void checkFrozenAlcCost() throws UnderAgeException {
         double amount = frozenAlc.calcCost();
         assertEquals(frozenAlcExpected, amount, .01);
     }
@@ -431,7 +431,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkFrozenAlc1Cost() throws UnderAgeException{
+    public void checkFrozenAlc1Cost() throws UnderAgeException {
         double amount = frozenAlc1.calcCost();
         assertEquals(frozenAlc1Expected, amount, .01);
     }
@@ -464,7 +464,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkFrozenAlc2Cost() throws UnderAgeException{
+    public void checkFrozenAlc2Cost() throws UnderAgeException {
         double amount = frozenAlc2.calcCost();
         assertEquals(frozenAlc2Expected, amount, .01);
     }
@@ -497,7 +497,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkFrozenAlc3Cost() throws UnderAgeException{
+    public void checkFrozenAlc3Cost() throws UnderAgeException {
         double amount = frozenAlc3.calcCost();
         assertEquals(frozenAlc3Expected, amount, .01);
 
@@ -528,7 +528,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkAlcoholExCost() throws UnderAgeException{
+    public void checkAlcoholExCost() throws UnderAgeException {
         double amount = alcoholEx.calcCost();
         assertEquals(alcoholExExpected, amount, .01);
     }
@@ -557,7 +557,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkAlcoholEx1Cost() throws UnderAgeException{
+    public void checkAlcoholEx1Cost() throws UnderAgeException {
         double amount = alcoholEx1.calcCost();
         assertEquals(alcoholEx1Expected, amount, .01);
     }
@@ -585,7 +585,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkNoAlcoholCost() throws UnderAgeException{
+    public void checkNoAlcoholCost() throws UnderAgeException {
         double amount = noAlcohol.calcCost();
         assertEquals(noAlcoholExpected, amount, .01);
     }
@@ -618,7 +618,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkFrozAlcDealUnderAgeCost() throws UnderAgeException{
+    public void checkFrozAlcDealUnderAgeCost() throws UnderAgeException {
         double amount = frozDealUnder.calcCost();
         assertEquals(frozDealUnderExpected, amount, .01);
     }
@@ -647,7 +647,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkUnderAgeProduceDealCost() throws UnderAgeException{
+    public void checkUnderAgeProduceDealCost() throws UnderAgeException {
         double amount = produceDeal.calcCost();
         assertEquals(produceDealExpected, amount, .01);
     }
@@ -680,7 +680,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkNonDealUnderAgeCost() throws UnderAgeException{
+    public void checkNonDealUnderAgeCost() throws UnderAgeException {
         double amount = nonDealUnder.calcCost();
         assertEquals(nonDealUnderExpected, amount, .01);
     }
@@ -711,7 +711,7 @@ public class BlackBoxGiven {
     }
     
     @Test
-    public void checkEmptyCost() throws UnderAgeException{
+    public void checkEmptyCost() throws UnderAgeException {
         double amount = empty.calcCost();
         assertEquals(emptyExpected, amount, .01);
     }

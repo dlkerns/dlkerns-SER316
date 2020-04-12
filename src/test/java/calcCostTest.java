@@ -652,7 +652,7 @@ public class calcCostTest {
     }
 
     @Test
-    public void checkUnderAgeProduceDealCost() throws UnderAgeException{
+    public void checkUnderAgeProduceDealCost() throws UnderAgeException {
         double amount = produceDeal.calcCost();
         assertEquals(produceDealExpected, amount, .01);
     }
