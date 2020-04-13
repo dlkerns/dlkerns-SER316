@@ -1,6 +1,4 @@
-
  plugins {
-
      id "com.github.spotbugs" version "3.0.0"
      id "checkstyle"
  }
@@ -34,7 +32,8 @@ test{
     // Keep checkstyle a little quieter
     ignoreFailures = true
     showViolations = false
- }
+
+  }
 
   tasks.withType(Checkstyle) {
     reports {
