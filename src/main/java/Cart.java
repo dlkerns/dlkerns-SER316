@@ -242,8 +242,12 @@ public class Cart {
         stateTax.put("CO", new Double(0.07));
       
         double tax = stateTax.getOrDefault(stateAbbreviation, total);
-      
-        return tax * total;
+        if (tax != 0.0) {
+            return tax * total;
+        
+        } else {
+            return total;
+        }
     }
     /**  
    *
