@@ -13,14 +13,18 @@ import java.util.List;
  *
  */
 
+/**
+ * @author davidkerns
+ *
+ */
 public class Cart {
 
     protected int userAge;
     public List<Product> cart;
     
    
-   // SER316 TASK 2 SPOTBUGS FIX
-   // public int cartStorage;
+    // SER316 TASK 2 SPOTBUGS FIX
+    // public int cartStorage;
 
     /**
      * Calculates the final cost after all savings and tax has been applied. Also checks
@@ -42,31 +46,42 @@ public class Cart {
      * @throws UnderAgeException
      * 
      */
+
+    
+    /**
+     * calcCost().
+     * @return cost
+     * @throws UnderAgeException
+     * 
+     */
     public double calcCost() throws UnderAgeException {
         double subTotal = 0;
         double total = 0;
-        double produceDeal = 1.0;
-        double frozenDeal = 3.0;
-
-        int produceCounter = 0;
-        int alcoholCounter = 0;
-        int frozenFoodCounter = 0;
-        int meatCounter = 0;
-        int dairyCounter = 0;
-
+       
+      
+        double savings = amountSaved();
 
         for (int i = 0; i < cart.size(); i++) {
             subTotal += cart.get(i).getCost();
+        }
+        total = subTotal - savings;
+        return total;
+    }
+        
 
-
+    /**
             if (cart.get(i).getClass().toString().equals(Produce.class.toString())) {
                 produceCounter++;
-
-
-                if (produceCounter >= 3) {
-                    subTotal = subTotal - produceDeal;
+                double result = produceDeal(produceCounter, subTotal);
+                if (result != 0) {
                     produceCounter = 0;
                 }
+
+
+                //if (produceCounter >= 3) {
+                //    subTotal = subTotal - produceDeal;
+                 //   produceCounter = 0;
+                //}
 
 
             
