@@ -32,6 +32,15 @@
         <property name="reportLevel" value="10"/>
     </properties>
 </rule>
+</rule>
+	<rule ref="category/java/design.xml/CollapsibleIfStatements">
+</rule>
+</rule>
+	<rule ref="category/java/design.xml/TooManyMethods">
+		<properties>
+        <property name="maxmethods" value="10"/>
+    </properties>
+</rule>
 <rule ref="category/java/bestpractices.xml/LooseCoupling" />
 
 
