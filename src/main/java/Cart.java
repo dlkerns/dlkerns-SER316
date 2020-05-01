@@ -64,7 +64,8 @@ public class Cart {
         for (int i = 0; i < cart.size(); i++) {
             subTotal += cart.get(i).getCost();
         }
-        total = subTotal - savings;
+        subTotal = subTotal - savings;
+        total = subTotal + (getTax(subTotal,"AZ"));
         return total;
     }
         
