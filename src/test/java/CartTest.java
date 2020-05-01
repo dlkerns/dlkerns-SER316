@@ -345,29 +345,7 @@ public class CartTest {
     public void getCoTax() {
         assertEquals(3.5, coTax.getTax(50, "CO"), .01);
     }
-    /////////////////////////////////////////////////////////////////////
-    //Test method: getDefTax()
-    //Description: Checks to see if default tax just returns the input 
-    //             amount without any taxes attached
-    //
-    /////////////////////////////////////////////////////////////////////
-   
-    Cart dTax;
-
-    @Before
-    public void setUpDef() throws Exception {
-        dTax = new Cart(45);
-    }
-
-    @After
-    public void tearDown11() throws Exception {
-    }
-
-    @Test
-    public void getDefTax() {
-        assertEquals(50.0, dTax.getTax(50, "LA"), .01);
-    }
-
+ 
     /////////////////////////////////////////////////////////////////////
     //Test method: getRemoveIt()
     //Description: Checks to see if removeIt() works properly
