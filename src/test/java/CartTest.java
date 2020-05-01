@@ -365,7 +365,7 @@ public class CartTest {
 
     @Test
     public void getDefTax() {
-        assertEquals(50, dTax.getTax(50, "LA"), .01);
+        assertEquals(50.0, dTax.getTax(50, "LA"), .01);
     }
 
     /////////////////////////////////////////////////////////////////////
