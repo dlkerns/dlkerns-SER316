@@ -228,6 +228,30 @@ public class Cart {
      * 
      * @return
      */
+    
+    public double getTax(double total, String stateAbbreviation) {
+        double newTotal = 0;
+        
+        if (stateAbbreviation.equals("AZ")) {
+            newTotal = total * .08;
+            
+        
+        } else if (stateAbbreviation.equals("CA")) {
+            newTotal = total * .09;
+        
+        } else if (stateAbbreviation.equals("NY")) {
+            newTotal = total * .1;
+        
+        } else if (stateAbbreviation.equals("CO")) {
+            newTotal  = total * .07;
+        
+        } else {
+            return total;
+        }
+        
+        return newTotal;
+    }
+    /**
     public double getTax(double totalBT, String stateAbbreviation) {
         double newTotal = 0;
         switch (stateAbbreviation) {
@@ -251,6 +275,7 @@ public class Cart {
         }
         return newTotal;
     }
+    */
 
     public void addItem(Product np) {
         cart.add(np);
