@@ -1,6 +1,9 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.List;
 
 /**
@@ -14,6 +17,8 @@ public class Cart {
 
     protected int userAge;
     public List<Product> cart;
+    
+   
    // SER316 TASK 2 SPOTBUGS FIX
    // public int cartStorage;
 
@@ -228,7 +233,20 @@ public class Cart {
      * 
      * @return
      */
-    
+    public double getTax(double total, String stateAbbreviation) {
+        HashMap<String, Double> stateTax = new HashMap<String, Double>();
+      
+        stateTax.put("AZ", new Double(0.08));
+        stateTax.put("CA", new Double(0.09));
+        stateTax.put("NY", new Double(0.1));
+        stateTax.put("CO", new Double(0.07));
+      
+        double tax = stateTax.getOrDefault(stateAbbreviation, total);
+      
+        return tax * total;
+    }
+    /**  
+   *
     public double getTax(double total, String stateAbbreviation) {
         double newTotal = 0;
         
@@ -251,6 +269,7 @@ public class Cart {
         
         return newTotal;
     }
+    */
     /**
     public double getTax(double totalBT, String stateAbbreviation) {
         double newTotal = 0;
